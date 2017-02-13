@@ -25,13 +25,9 @@ arrow.isDraggable = false;
 point0.isDraggable = false;
 point2.isDraggable = false;
 
-
-point.on('drag', function() {
-
-    console.log(arrow.getAngle());
-
-    var a = '' + point.X();
-    var b = point.Y() + 'i';
+function getExpression() {
+    var a = '' + point.X().toFixed(2);
+    var b = point.Y().toFixed(2) + 'i';
 
     var z = '';
 
@@ -40,6 +36,21 @@ point.on('drag', function() {
     } else {
         z = a + b;
     }
+
+    return z;
+}
+
+
+var z = getExpression();
+var formula = document.getElementById("complex_expression");
+formula.innerHTML = "\\[" + z + "\\]";
+
+
+point.on('drag', function() {
+
+    console.log(arrow.getAngle());
+
+    var z = getExpression();
 
     var formula = document.getElementById("complex_expression");
 
