@@ -53,8 +53,13 @@ point.on('drag', function() {
     var z = getExpression();
 
     var formula = document.getElementById("complex_expression");
+    var angle_div = document.getElementById('complex_angle');
 
-    formula.innerHTML = "\\[" + z + "\\]";
+
+
+    formula.innerHTML = "Complex Number: " + "\\[" + z + "\\]";
+    angle_div.innerHTML = "Angle: " + "\\[" + (arrow.getAngle().toFixed(2) * 180 / 3.14159).toFixed(2) + "\\]";
 
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, formula]);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, angle_div]);
 });
